@@ -1,0 +1,17 @@
+setwd("E:\\PSK")
+
+#keterangan: 
+# At= Nilai Akumulasi
+# k= modal
+# i= bunga (desimal)
+# t= waktu (tahun)
+bunga<- function(num,At,k,t,m=TRUE){
+  switch(num,
+         satu={i=(At/k-1)/t},
+         dua={i=m*((At/k)^(1/(m*t))-1)},
+         tiga={i=log(At/k)/t})
+  return(i)}
+
+bunga(1,140,100,4)
+bunga(2,2160,2000,1)
+bunga(3,4000,500,30)
