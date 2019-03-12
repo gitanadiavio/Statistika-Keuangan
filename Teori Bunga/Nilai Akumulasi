@@ -1,0 +1,74 @@
+setwd("E:\\PSK")
+
+akumulasi_bungatunggal<-function(k,i,t){
+  nilai_akumulasi=k*(1+i*t)
+  return(nilai_akumulasi)
+}
+
+akumulasi_bungatunggal(100,0.1,3) 
+
+######################################
+nilai_akumulasi <- function(num, k,i,t){
+  switch(num, 
+         satu = {
+           At = k*(1+i*t)
+         },
+         dua = {
+           At = k*(1+i)^t
+         }
+  )
+return(At)
+}
+#########penjelasan
+# num:
+# pilihan 1 : bunga tunggal
+#         2 : bunga majemuk biasa m nya = 1
+# k= modal
+# i= bunga(desimal)
+# t= waktu
+# m= banyak bunga diberikan dalam 1 tahun
+
+nilai_akumulasi(1,100,0.1,4)
+nilai_akumulasi(2,2000,0.8,3)
+
+##########BUNGA MAJEMUK NOMINAL APAILA M>1
+nilai_akumulasi <- function(num, k,i,t, m=TRUE){
+  switch(num, 
+         satu = {
+           At = k*(1+i)^t
+         },
+         dua = {
+           At = k*(1+i/m)^(m*t)
+         }
+  )
+  return(At)
+}
+
+# contoh bunga majemuk biasa 
+nilai_akumulasi(2,100,0.1,5)
+
+############# KESELURUHAN #############################
+nilai_akumulasi <- function(num, k,i,t, m=TRUE){
+  # satu= bunga tunggal
+  # dua= bunga majemuk nominal
+  # tiga= bunga majemuk kontinu
+  # k= modal
+  # i= bunga (desimal)
+  # t= waktu (tahun)
+  # m= banyak bunga diberikan dalam 1 tahun
+  switch(num,
+         satu = {
+           At = k*(1+i*t)
+           cat ("Nilai akumulasi bunga tunggal:", At)
+         },
+         dua = {
+           At = k*(1+i/m)^(m*t)
+           cat ("Nilai akumulasi bunga majemuk biasa/nominal:", At)
+         },
+         tiga = {
+           At = k*exp(i*t)
+           cat ("Nilai akumulasi bunga majemuk kontinu:", At)})}
+nilai_akumulasi(2,1,0.1,5)
+nilai_akumulasi(2,1,0.1,5,m=2)
+nilai_akumulasi(2,1,0.1,5,m=12)
+nilai_akumulasi(2,1,0.1,5,m=365)
