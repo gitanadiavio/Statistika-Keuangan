@@ -1,1 +1,30 @@
+#keterangan : k=modal ; n=banyaknya pembayaran cicilan ; i=bunga
+
+annuitas<- function(num,k,i,t,m=TRUE){
+  j=i/m
+  n=m*t
+  v=(1+j)^-1
+  switch(num,
+         satu={
+           an=k*(1-v^n)/j
+           sn=k*((1+j)^n-1)/j
+           cat("present value untuk annuitas akhir:",an, "\n")
+           cat("present value untuk annuitas akhir:",sn)
+         }, 
+         dua={
+           an=k*(1-v^n)/(j*v)
+           sn=k*((1+j)^n-1)/(j*v)
+           cat("present value untuk annuitas awal:",an, "\n")
+           cat("present value untuk annuitas awal:",sn)
+         }
+  )}
+annuitas(1,300,0.08,10) 
+annuitas(2,300,0.08,10)
+annuitas(1,10,0.12,10)
+#nadia mengikuti tabungan berencana di bank selama 5 tahun. Setiap awal bulan, bank melakukan pemotongan gaji
+#Nadia sebesar Rp.1.000.000 apabila bank memberikan bunga sebesar 5% konversi bulanan , maka berapakah uang yang diterima nadia 5 tahun lagi
+annuitas(2,1,0.05,5,12)
+#mobil
+annuitas(1,5,0.18,4,12)
+200-170.2128
 
